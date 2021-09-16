@@ -1,0 +1,169 @@
+.bg
+{   
+        background: url('bg.png');
+        position: absolute;
+        left:500px;
+        top: 200px;
+        width: 824px;
+        height: 492px;
+}
+#draggable
+{
+    width: 824px;
+    height: 492px;
+}
+.button_server1 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 550px;
+    top: 300px;
+    width: 407px;
+    height: 60px;
+    z-index: 13;
+  }
+  .button_server2 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 550px;
+    top: 380px;
+    width: 407px;
+    height: 60px;
+    z-index: 14;
+  }
+  .button_server3 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 550px;
+    top: 460px;
+    width: 407px;
+    height: 60px;
+    z-index: 15;
+  }
+  .button_left1 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 1050px;
+    top: 300px;
+    width: 223px;
+    height: 64px;
+    z-index: 3;
+  }
+  .button_left2 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 1050px;
+    top: 380px;
+    width: 223px;
+    height: 64px;
+    z-index: 4;
+  }
+  .button_left3 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: absolute;
+    left: 1050px;
+    top: 460px;
+    width: 223px;
+    height: 64px;
+    z-index: 4;
+  }
+
+  .names_dialogs {
+    font-size: 30px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    -moz-transform: matrix( 0.91005291005291,0,0,0.91005291005291,0,0);
+    -webkit-transform: matrix( 0.91005291005291,0,0,0.91005291005291,0,0);
+    -ms-transform: matrix( 0.91005291005291,0,0,0.91005291005291,0,0);
+    position: absolute;
+    left: 540.375px;
+    top: 210.349px;
+    width: 390.345px;
+    height: 27.297px;
+    z-index: 2;
+  }
+  .text_server1 {
+    font-size: 24px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    position: absolute;
+    left: 570px;
+    top: 315px;
+    width: 220px;
+    height: 23px;
+    z-index: 14;
+  }
+  .text_server2 {
+    font-size: 24px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    position: absolute;
+    left: 570px;
+    top: 395px;
+    width: 220px;
+    height: 23px;
+    z-index: 17;
+  }
+  
+  .text_server3 {
+    font-size: 24px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    position: absolute;
+    left: 570px;
+    top: 475px;
+    width: 220px;
+    height: 23px;
+    z-index: 16;
+  }
+  
+  .close {
+    font-size: 24px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    position: absolute;
+    left: 1270.602px;
+    top: 210.004px;
+    width: 16.329px;
+    height: 16.813px;
+    z-index: 11;
+  }
+  

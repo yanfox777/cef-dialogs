@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+    <head>
+            <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    </head>
+
+<body>
+
+    <div id="draggable">
+                        <div   class="close" onclick="ButtonExit(this)">X</div>
+                        <div class="bg"></div>
+                        
+                        <div  class="button_server1" onclick="ButtonClick(0)"></div>
+                        <div type="submit"  class="button_server2" onclick="ButtonClick(1)"></div>
+                        <div type="submit"  class="button_server3" onclick="ButtonClick(2)"></div>
+                        <div type="submit"  class="button_left1"  onclick="ButtonClick(3)"></div>
+                        <div type="submit"  class="button_left2" onclick="ButtonClick(4)"></div>
+                        <div type="submit"  class="button_left3" onclick="ButtonClick(5)"></div>
+                        <a class="text_server1">Тестовое название</a>
+                        <a class="text_server2">Тестовое название</a>
+                        <a class="text_server3">Тестовое название</a>
+                        <a class="names_dialogs">Управление транспортом</a>
+    </div>
+
+</body>
+<script src="cef-dialogs.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+
+    $( "#draggable" ).draggable();
+
+  </script>
+</html>
