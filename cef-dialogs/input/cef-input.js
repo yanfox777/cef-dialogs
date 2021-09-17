@@ -15,14 +15,15 @@ function SelectClickButton(event)
 {
     if(event == 0)
     {    
+            let text = input_text.value;
             //предусмотрена для скриптов 
-            cef.emit('input:response', 0);
-            cef.emit('input:value', input_text.value);
+            cef.emit('input:response', 0, text);
+            //cef.emit('input:value', input_text.value);
     }
     if(event == 1)
     {
             //Предусмотрена для закрытия, а не как для скриптов 
-            cef.emit('input:response', 1);
-            cef.emit('input:value', input_text.value);
+            cef.emit('input:response', 1, text);
+           // cef.emit('input:value', input_text.value);
     }
 }
