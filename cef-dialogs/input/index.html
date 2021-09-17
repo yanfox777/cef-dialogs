@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+        <head>
+                <link rel="stylesheet" href="style.css">
+
+        </head>
+<body>
+<div id="draggable">
+        <div class="bg">
+
+        </div>
+        <div class="text">
+           <p id="text_info">Вот тут вы пишите ваш уникальный текст, который сделает вас умными и не тупыми людьми. 
+               Поймите что вы совершенство и данный input я не солью)</p>
+        </div> 
+        <input id="text_input" type="text" placeholder="Введите ваш запрос:">
+        <button onclick="SelectClickButton(0)" type="submit"><a id="btn_1" class="text_button">кнопка1</a></button>
+        <button onclick="SelectClickButton(1)" type="submit"><a  id="btn_2" class="text_button">кнопка2</a></button>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( "#draggable" ).draggable();
+  </script>
+  <script src="cef-input.js"></script>
+</html>

@@ -1,11 +1,13 @@
 .bg
 {   
-        background: url('bg.png');
+        background: url('bg_2.png');
         position: absolute;
         left:500px;
         top: 200px;
-        width: 824px;
-        height: 492px;
+        /*width: 824px;
+        height: 492px;*/
+        width: 499px;
+        height: 640px;
 }
 #draggable
 {
@@ -19,11 +21,11 @@
     border-style: solid;
     border-radius: 10px;
     background-color: rgb(64, 64, 64);
-    position: absolute;
-    left: 550px;
-    top: 300px;
-    width: 407px;
-    height: 60px;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 370px;
+    height: 50px;
     z-index: 13;
   }
   .button_server2 {
@@ -33,11 +35,11 @@
     border-style: solid;
     border-radius: 10px;
     background-color: rgb(64, 64, 64);
-    position: absolute;
-    left: 550px;
-    top: 380px;
-    width: 407px;
-    height: 60px;
+    position: relative;
+    left: 0px;
+    top:5px;
+    width: 370px;
+    height: 50px;
     z-index: 14;
   }
   .button_server3 {
@@ -47,13 +49,126 @@
     border-style: solid;
     border-radius: 10px;
     background-color: rgb(64, 64, 64);
-    position: absolute;
-    left: 550px;
-    top: 460px;
-    width: 407px;
-    height: 60px;
+    position: relative;
+    left: 0px;
+    top: 10px;
+    width: 370px;
+    height: 50px;
     z-index: 15;
   }
+  .button_server4 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 15px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server5 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 20px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server6 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 25px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server7{
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 30px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server8 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 35px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server9 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 40px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server10 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 45px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  .button_server11 {
+    cursor: pointer;
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    position: relative;
+    left: 0px;
+    top: 50px;
+    width: 370px;
+    height: 50px;
+    z-index: 15;
+  }
+  /*
   .button_left1 {
     cursor: pointer;
     border-width: 0px;
@@ -95,7 +210,7 @@
     width: 223px;
     height: 64px;
     z-index: 4;
-  }
+  } */
 
   .names_dialogs {
     font-size: 30px;
@@ -120,8 +235,8 @@
     font-weight: bold;
     line-height: 1.2;
     position: absolute;
-    left: 570px;
-    top: 315px;
+    left: 15px;
+    top: 15px;
     width: 220px;
     height: 23px;
     z-index: 14;
@@ -133,8 +248,8 @@
     font-weight: bold;
     line-height: 1.2;
     position: absolute;
-    left: 570px;
-    top: 395px;
+    left: 15px;
+    top: 15px;
     width: 220px;
     height: 23px;
     z-index: 17;
@@ -147,23 +262,76 @@
     font-weight: bold;
     line-height: 1.2;
     position: absolute;
-    left: 570px;
-    top: 475px;
+    left: 15px;
+    top: 15px;
     width: 220px;
     height: 23px;
     z-index: 16;
   }
-  
+  .text_server {
+    font-size: 24px;
+    font-family: "TT Norms";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 1.2;
+    position: absolute;
+    left: 15px;
+    top: 11px;
+    width: 220px;
+    height: 23px;
+    z-index: 16;
+  }
   .close {
     font-size: 24px;
     font-family: "TT Norms";
     color: rgb(255, 255, 255);
     font-weight: bold;
     position: absolute;
-    left: 1270.602px;
-    top: 210.004px;
+    left:955.602px;
+    top: 215.004px;
     width: 16.329px;
     height: 16.813px;
     z-index: 11;
   }
-  
+
+  .menu-button{
+        position: relative;
+        width:400px; /* ширина нашего блока */
+        height:500px; /* высота нашего блока */
+        overflow:auto;
+        overflow-x:hidden;
+        left: 550px;
+        top: 280px;
+  }
+  ::-webkit-scrollbar-button {
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:6px;
+    height:0px;
+    overflow-x:hidden;
+    }
+    
+    ::-webkit-scrollbar-track {
+    background-color:#32312e;
+    border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    left: 2px;
+    background-color:#6d6d6d;
+    background-position:center;
+    background-repeat:no-repeat;
+    }
+    
+    ::-webkit-resizer{
+    background-image:url('');
+    background-repeat:no-repeat;
+    width:7px;
+    height:0px
+    }
+    
+    ::-webkit-scrollbar{
+    width: 11px;
+    }

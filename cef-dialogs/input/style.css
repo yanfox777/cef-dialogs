@@ -1,0 +1,69 @@
+.bg {
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(64, 64, 64);
+    opacity: 0.839;
+    position: relative;
+    left: 508px;
+    top: 409px;
+    width: 682px;
+    height: 291px;
+  }
+.text
+{
+        font-size: 15px;
+        font-family: "TT Norms";
+        color: rgb(255, 255, 255);
+        position:relative;
+        left: 571.297px;
+        top: 150.998px;
+        width: 500px;
+        height: 20px;
+}
+
+::-webkit-input-placeholder {color:white; opacity:1;}/* webkit */
+::-moz-placeholder          {color:white; opacity:1;}/* Firefox 19+ */
+:-moz-placeholder           {color:white; opacity:1;}/* Firefox 18- */
+:-ms-input-placeholder      {color:white; opacity:1;}/* IE */
+
+input {
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 20px;
+    background-color: rgb(113, 113, 113);
+    opacity: 0.831;
+    position: relative;
+    border: none;
+    outline: none;
+    padding-left: 50px;
+    left: 530px;
+    top: 250px;
+    width: 579px;
+    height: 50px;
+    color:white;
+    font-size: 15px;
+    font-family: "TT Norms";
+  }
+  button{
+    border-width: 0px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    background-color: rgb(113, 113, 113);
+    position: relative;
+    left: 60px;
+    margin-left: 20px;
+    top: 315px;
+    width: 112px;
+    height: 36px;
+  }
+.text_button
+{
+        font-size: 20px;
+        font-family: "TT Norms";
+        color: rgb(255, 255, 255);
+        position: relative;
+}

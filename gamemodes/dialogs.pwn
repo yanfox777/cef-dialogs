@@ -7,17 +7,44 @@ main(){}
 
 
 forward CefDialogs(player_id);
-forward OnCefDialogResponse(player_id, const button_click[]);
+forward OnCefDialogResponseList(player_id, const button_click[]);
+forward OnCefDialogResponseInput(player_id, const button_click[]);
+forward OnInputResponse(player_id, const info[]);
+forward CefDialogsInput(player_id);
 new browser;
+enum info_player
+{
+	dialog_id_online, //диалог в котором сейчас игрок.
 
+}
+new inf[MAX_PLAYERS][info_player];
+enum dialog_params
+{
+	dialog_name[60],
+	dialog_button1[60],
+	dialog_button2[60],
+	dialog_button3[60],
+	dialog_button4[60],
+	dialog_button5[60],
+	dialog_button6[60],
+	dialog_button7[60],
+	dialog_button8[60],
+	dialog_button9[60],
+	dialog_button10[60],
+	dialog_button11[60],
+}
+new dialog[MAX_PLAYERS][dialog_params];
 public OnGameModeInit()
 {
 	cef_subscribe("dialog:on", "CefDialogs");
 	cef_subscribe("dialog:off", "CefDialogsClosed");
 	
+	cef_subscribe("input:on", "CefDialogsInput");
+	cef_subscribe("input:value", "CefInputResponse");
+	cef_subscribe("input:response", "OnCefDialogResponseInput");
 	//dialogs buttons
-    cef_subscribe("dialog:button", "OnCefDialogResponse");
-	SetGameModeText("Blank Script");
+    cef_subscribe("dialog:button", "OnCefDialogResponseList");
+	SetGameModeText("dialogs news");
 	AddPlayerClass(0, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
 	return 1;
 }
@@ -38,12 +65,15 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
+    DestroyDialogs(playerid, 1);
 	return 1;
 }
 
 public OnPlayerSpawn(playerid)
 {
-    ShowPlayerDialogCEF(playerid, 1, "http://royzenvo.beget.tech/dialogs/", "Тестовый диалог", "Статистика игрока","Кнопка 2", "Кнопка 3", "Кнопка 4", "Кнопка 5", "Кнопка 6");
+    //ShowPlayerDialogCEF(playerid, 1, "http://royzenvo.beget.tech/dialogs/", "Тестовый диалог", "Статистика игрока","Настройки", "Донат",
+	//"Репорт", "Лист наказаний", "кнопка 6", "кнопка 7", "кнопка 8", "кнопка 9", "кнопка 10", "кнопка 11");
+	ShowPlayerDialogCEFI(playerid, 0, 2, "http://royzenvo.beget.tech/dialogs/input/", "Всем привет дорогие мошенники. С вами гриша!", ">>", "Закрыть");
 	return 1;
 }
 
@@ -53,35 +83,65 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 }
 public CefDialogs(player_id)
 {
-	new names[90], button1[60], button2[60], button3[60], button4[60], button5[60], button6[60];
-	GetPVarString(player_id, "name", names, sizeof(names));
-	SendClientMessage(player_id, -1, names);
-	GetPVarString(player_id, "button1", button1, sizeof(button1));
-	GetPVarString(player_id, "button2", button2, sizeof(button2));
-	GetPVarString(player_id, "button3", button3, sizeof(button3));
-	GetPVarString(player_id, "button4", button4, sizeof(button4));
-	GetPVarString(player_id, "button5", button5, sizeof(button5));
-	GetPVarString(player_id, "button6", button6, sizeof(button6));
-	cef_emit_event(player_id, "dialog:all", CEFSTR("Тестовый диалог"),
-	CEFSTR(button1),
-	CEFSTR(button2),
-	CEFSTR(button3),
-	CEFSTR(button4),
-	CEFSTR(button5),
-	CEFSTR(button6));
+	SendClientMessage(player_id, -1, dialog[dialog_name]);
+	//одним сообщением не отправляется , пришлось разделить. ( разницы не меняет )
+	cef_emit_event(player_id, "dialog:button_server_one", CEFSTR(dialog[player_id][dialog_button1]));
+	cef_emit_event(player_id, "dialog:button_server_two", CEFSTR(dialog[player_id][dialog_button2]));
+	cef_emit_event(player_id, "dialog:button_server_three", CEFSTR(dialog[player_id][dialog_button3]));
+	cef_emit_event(player_id, "dialog:button_server_four", CEFSTR(dialog[player_id][dialog_button4]));
+	cef_emit_event(player_id, "dialog:button_server_five", CEFSTR(dialog[player_id][dialog_button5]));
+	cef_emit_event(player_id, "dialog:button_server_six", CEFSTR(dialog[player_id][dialog_button6]));
+	cef_emit_event(player_id, "dialog:button_server_seven", CEFSTR(dialog[player_id][dialog_button7]));
+	cef_emit_event(player_id, "dialog:button_server_eight", CEFSTR(dialog[player_id][dialog_button8]));
+	cef_emit_event(player_id, "dialog:button_server_nine", CEFSTR(dialog[player_id][dialog_button9]));
+	cef_emit_event(player_id, "dialog:button_server_eleven", CEFSTR(dialog[player_id][dialog_button10]));
+	cef_emit_event(player_id, "dialog:button_server_twelve", CEFSTR(dialog[player_id][dialog_button11]));
+	cef_emit_event(player_id, "dialog:name", CEFSTR(dialog[dialog_name]));
 }
 forward CefDialogsClosed(player_id);
 public CefDialogsClosed(player_id)
 {
 	cef_hide_browser(player_id, browser, true);
 	cef_focus_browser(player_id, browser, false);
+	cef_destroy_browser(player_id, browser);
 }
-public OnCefDialogResponse(player_id, const button_click[])
+public OnCefDialogResponseInput(player_id, const button_click[])
+{
+	new resp;
+	sscanf(button_click, "i", resp);
+	if(inf[player_id][dialog_id_online] == 0)
+	{
+		switch(resp)
+		{
+		    case 0:
+		    {
+		    	SendClientMessage(player_id, -1, "Вы нажали на кнопку 0");
+		    }
+		    case 1:
+		    {
+		    	SendClientMessage(player_id, -1, "Вы нажали на кнопку 1 . Данная кнопка предусмотрена для закрытия.");
+		    }
+		}
+	}
+}
+public CefDialogsInput(player_id)
+{
+	cef_emit_event(player_id, "input:info", CEFSTR(dialog[player_id][dialog_name]),CEFSTR(dialog[player_id][dialog_button1]), CEFSTR(dialog[player_id][dialog_button2]));
+}
+public OnInputResponse(player_id, const info[])
+{
+	new resp[250];
+	sscanf(info, "s[250]", resp);
+	
+	SendClientMessage(player_id, -1, resp);
+}
+public OnCefDialogResponseList(player_id, const button_click[])
 {
   	new resp;
 
   	sscanf(button_click, "i", resp);
 
+	//принимаем нажатие и обрабатываем их ( всего 8 кнопок , начало идет с 0 )
 	if(resp == 0)
 	{
 	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 0");
@@ -106,25 +166,64 @@ public OnCefDialogResponse(player_id, const button_click[])
 	{
 	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 5");
 	}
+	if(resp == 6)
+	{
+	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 6");
+	}
+	if(resp == 7)
+	{
+	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 7");
+	}
+	if(resp == 8)
+	{
+	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 8");
+	}
+	if(resp == 9)
+	{
+	    SendClientMessage(player_id, -1, "Вы нажали на кнопку 9");
+	}
 }
-stock ShowPlayerDialogCEF(player_id, browser_id, url[], name_dialog[], button_server_one[],button_server_two[], button_server_three[], button_left_one[], button_left_two[], button_left_three[])
+stock ShowPlayerDialogCEFI(player_id, id_dialog, browser_id, url[], text_info[], button1[], button2[])
 {
-	SetPVarString(player_id, "name", name_dialog);
-	SetPVarString(player_id, "button1", button_server_one);
-	SetPVarString(player_id, "button2", button_server_two);
-	SetPVarString(player_id, "button3", button_server_three);
-	SetPVarString(player_id, "button4", button_left_one);
-	SetPVarString(player_id, "button5", button_left_two);
-	SetPVarString(player_id, "button6", button_left_three);
-	browser = browser_id;
-	//create browser + event callback
+	strins(dialog[player_id][dialog_name], text_info, 0);
+	strins(dialog[player_id][dialog_button1], button1, 0);
+	strins(dialog[player_id][dialog_button2], button2, 0);
+	inf[player_id][dialog_id_online] = id_dialog;
 	cef_create_browser(player_id, browser_id, url, false, true);
-	/*cef_emit_event(player_id, "dialog:button_server_one", CEFSTR(button_server_one));
-	cef_emit_event(player_id, "dialog:button_server_two", CEFSTR(button_server_two));
-	cef_emit_event(player_id, "dialog:button_server_three", CEFSTR(button_server_three));
-	cef_emit_event(player_id, "dialog:button_left_one", CEFSTR(button_left_one));
-	cef_emit_event(player_id, "dialog:button_left_two", CEFSTR(button_left_two));
-	cef_emit_event(player_id, "dialog:button_left_three", CEFSTR(button_left_three));
-	cef_emit_event(player_id, "dialog:name", CEFSTR(name));*/
+}
+stock DestroyDialogs(player_id, browser_id)
+{
+	strins(dialog[player_id][dialog_name], "", 0);
+	strins(dialog[player_id][dialog_button1], "", 0);
+	strins(dialog[player_id][dialog_button2], "", 0);
+	strins(dialog[player_id][dialog_button3], "", 0);
+	strins(dialog[player_id][dialog_button4], "", 0);
+	strins(dialog[player_id][dialog_button5], "", 0);
+	strins(dialog[player_id][dialog_button6], "", 0);
+	strins(dialog[player_id][dialog_button7], "", 0);
+	strins(dialog[player_id][dialog_button8], "", 0);
+	strins(dialog[player_id][dialog_button9], "", 0);
+	strins(dialog[player_id][dialog_button10], "", 0);
+	strins(dialog[player_id][dialog_button11], "", 0);
+	cef_destroy_browser(player_id, browser_id);
+}
+stock ShowPlayerDialogCEF(player_id, browser_id, url[], name_dialog[], button_server_one[],button_server_two[], button_server_three[],
+button_server_four[], button_server_five[],button_server_six[],button_server_seven[],button_server_eight[],
+button_server_nine[], button_server_eleven[], button_server_twelve[])
+{
+	strins(dialog[player_id][dialog_name], name_dialog, 0);
+	strins(dialog[player_id][dialog_button1], button_server_one, 0);
+	strins(dialog[player_id][dialog_button2], button_server_two, 0);
+	strins(dialog[player_id][dialog_button3], button_server_three, 0);
+	strins(dialog[player_id][dialog_button4], button_server_four, 0);
+	strins(dialog[player_id][dialog_button5], button_server_five, 0);
+	strins(dialog[player_id][dialog_button6], button_server_six, 0);
+	strins(dialog[player_id][dialog_button7], button_server_seven, 0);
+	strins(dialog[player_id][dialog_button8], button_server_eight, 0);
+	strins(dialog[player_id][dialog_button9], button_server_nine, 0);
+	strins(dialog[player_id][dialog_button10], button_server_eleven, 0);
+	strins(dialog[player_id][dialog_button11], button_server_twelve, 0);
+	browser = browser_id;
+	cef_create_browser(player_id, browser_id, url, false, true);
 	return true;
 }
