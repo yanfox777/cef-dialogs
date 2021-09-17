@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+            <link rel="stylesheet" href="./app/css/style.css">
+</head>
+<body>
+<div id="draggable">
+            <div class="card">
+                <div class="text">
+                  <div class="title">
+                    
+                    <br><p id="head_msg">Удалить аккаунт?</p>
+                    <div class="tooltip">
+                <br>
+                    </div>
+                  </div>
+                  <div class="info">
+                    <p id="text_msg">Вы действительно хотите удалить персонажа Jason Rodriguez с переносом статистики на новый аккаунт или существующий? 
+
+          Данное действие невозможно отменить.</p>
+                  </div>
+                </div>
+                <div class="buttons">
+                  <div class="button" onclick="SelectButtonClick(0)"><a id="btn1">X</a></div>
+                  <div class="button button-primary" onclick="SelectButtonClick(1)"><a id="btn2">>></a></div>
+                </div>
+</div>
+</div>
+</body>
+<script src="msg-cef.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( "#draggable" ).draggable();
+  </script>
+</html>
