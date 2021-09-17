@@ -107,14 +107,15 @@ public CefDialogsClosed(player_id)
 }
 public OnCefDialogResponseInput(player_id, const button_click[])
 {
-	new resp;
-	sscanf(button_click, "i", resp);
+	new resp,str[156];
+	sscanf(button_click, "is[156]", resp, str);
 	if(inf[player_id][dialog_id_online] == 0)
 	{
 		switch(resp)
 		{
 		    case 0:
 		    {
+		    	SendClientMessage(player_id, -1, str);
 		    	SendClientMessage(player_id, -1, "Вы нажали на кнопку 0");
 		    }
 		    case 1:
